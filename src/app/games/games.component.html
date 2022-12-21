@@ -1,0 +1,38 @@
+<div class="games-containers">
+  <div class="games-list">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title> Course List </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let game of games" (click)="selectGame(game)">
+            <h5 matLine>{{ game.title }}</h5>
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="deleteGame(game.id); $event.stopImmediatePropagation()"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="games-details" *ngIf="selectedGame">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title> Selected Game </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <pre>{{ selectedGame | json }}</pre>
+      </mat-card-content>
+      <mat-card-actions>
+        <!-- COURSE ACTIONS -->
+        <button mat-button (click)="selectGame(null)">Reset</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -12,7 +12,10 @@
     "watch": "ng build --watch --configuration development",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "node ./decorate-angular-cli.js"
+    "postinstall": "node ./decorate-angular-cli.js",
+    "start-pwa": "ng build --prod && http-server -p 8080 -c-1 dist/AngularCourse",
+    "predeploy": "ng build --prod",
+    "deploy": "npx gh-pages -d dist/AngularCourse"
   },
   "private": true,
   "dependencies": {
@@ -26,7 +29,9 @@
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
+    "@angular/pwa": "^15.0.4",
     "@angular/router": "~8.2.14",
+    "@angular/service-worker": "~8.2.14",
     "bootstrap": "^5.2.3",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",

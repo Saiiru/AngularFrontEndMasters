@@ -1,0 +1,11 @@
+.category-chip.category-chip.category-chip { // repeated 3 times to override the Angular Material default styling
+    width: fit-content;
+    max-width: 100%;
+}
+
+.category-chip__text {
+    width: calc(100%); // calc is important here, do not use "100%" alone
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

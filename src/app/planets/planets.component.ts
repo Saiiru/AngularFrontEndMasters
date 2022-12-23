@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoaderService } from '../shared/services/loader/loader.service';
 import { PlanetService } from '../shared/services/planets/planet.service';
 
 @Component({
@@ -7,7 +8,27 @@ import { PlanetService } from '../shared/services/planets/planet.service';
   styleUrls: ['./planets.component.scss'],
 })
 export class PlanetsComponent implements OnInit {
-  constructor(private planetService: PlanetService) {}
+  planets: any[] = [];
+  starships: any[] = [];
+
+  loading$ = this._loader.isLoading$;
+
+  constructor(private planetService: PlanetService, private _loader: LoaderService) {}
 
   ngOnInit() {}
+
+  loadPlanets(){
+    this.planets = []
+    this.planetService.getAllPlanets().subscribe((data) => {
+      this.planets = data
+    })
+  }
+
+  loadStarships(){
+    this.planetService.getAllStarships().subscribe((data) => {
+
+      this.starships = data
+      console.log(this.starships, data)
+    })
+  }
 }

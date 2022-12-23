@@ -1,1 +1,16 @@
-<p>planets works!</p>
+<div class="items">
+  <ul>
+    <li *ngFor="let p of planets">{{ p.name }}</li>
+  </ul>
+  <ul>
+    <li *ngFor="let t of starships">{{ t.name }}, Model: {{ t.model }}</li>
+  </ul>
+</div>
+<div>
+  <button (click)="loadPlanets()">Load Planets</button>
+  <button (click)="loadStarships()">Load Starships</button>
+</div>
+<!-- subscription to loading observable > -->
+<div class="loading" *ngIf="loading$ | async">
+  <h1>Please wait...</h1>
+</div>

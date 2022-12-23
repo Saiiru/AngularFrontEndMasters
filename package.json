@@ -13,9 +13,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "node ./decorate-angular-cli.js",
-    "start-pwa": "ng build --prod && http-server -p 8080 -c-1 dist/AngularCourse",
+    "start-pwa": "ng build --prod && http-server -p 8081 -c-1 dist/AngularFrontEndMasters ",
     "predeploy": "ng build --prod",
-    "deploy": "npx gh-pages -d dist/AngularCourse"
+    "deploy": "npx gh-pages -d dist/AngularFrontEndMasters"
   },
   "private": true,
   "dependencies": {

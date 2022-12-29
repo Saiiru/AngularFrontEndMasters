@@ -1,90 +1,16 @@
-<div class="games-containers">
+<div class="games-container">
   <div class="games-list">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title> Course List </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item *ngFor="let game of games" (click)="selectGame(game)">
-            <h5 matLine>{{ game.title }}</h5>
-            <h3 matLine>{{ game.description }}</h3>
-            <button
-              mat-icon-button
-              color="warn"
-              (click)="deleteGame(game.id); $event.stopImmediatePropagation()"
-            >
-              <mat-icon>delete</mat-icon>
-            </button>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
+    <app-games-list
+      [games]="games$ | async"
+      (selected)="selectGame($event)"
+      (deleted)="deletedGame($event)"
+    ></app-games-list>
   </div>
-
   <div class="games-details">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>
-          <span *ngIf="originalTitle; else elseBlock">{{originalTitle | titlecase}}</span>
-          <ng-template #elseBlock>Select a game</ng-template>
-        </mat-card-title>
-      </mat-card-header>
-      <form #gameForm="ngForm" (submit)="saveGame(gameForm.value)">
-        <mat-card-content>
-          <mat-form-field class="full-width">
-            <input
-              type="text"
-              matInput
-              [(ngModel)]="selectedGame.title"
-              required
-              placeholder="Title"
-              name="title"
-            />
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <textarea
-              type="text"
-              matInput
-              [(ngModel)]="selectedGame.description"
-              required
-              placeholder="Description"
-              name="description"
-            ></textarea>
-          </mat-form-field>
-          <section class="full-width">
-            <mat-slider
-              [(ngModel)]="selectedGame.percentComplete"
-              min="0"
-              max="100"
-              step="1"
-              class="full-width"
-              name="percentComplete"
-            ></mat-slider>
-          </section>
-          <mat-checkbox
-            [aria-label]="isFavorite"
-            [(ngModel)]="selectedGame.favorite"
-            name="favorite"
-            [ngModelOptions]="{ standalone: true }"
-            >Favorite
-          </mat-checkbox>
-        </mat-card-content>
-        <mat-card-actions>
-          <!-- COURSE ACTIONS -->
-          <button
-            [disabled]="gameForm.invalid"
-            type="submit"
-            mat-button
-            color="primary"
-          >
-            Save
-          </button>
-          <button mat-button (click)="reset()">Reset</button>
-        </mat-card-actions>
-        <pre>{{ gameForm.value | json }}</pre>
-        <pre>{{ gameForm.valid | json }}</pre>
-      </form>
-    </mat-card>
+    <app-games-details
+      [game]="selectedGame"
+      (saved)="saveGame($event)"
+      (reset)="reset()"
+    ></app-games-details>
   </div>
 </div>

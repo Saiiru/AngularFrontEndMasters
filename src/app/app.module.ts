@@ -11,11 +11,12 @@ import { GamesComponent } from './games/games.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './shared/material.module';
 import { LoaderInterceptor } from './shared/services/loader/loader.interceptor';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { GamesListComponent } from './games/games-list/games-list.component';
+import { GamesDetailsComponent } from './games/games-details/games-details.component';
+
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, GamesComponent],
+  declarations: [AppComponent, HomeComponent, GamesComponent, GamesListComponent, GamesDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,8 +24,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
-    FormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    FormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}

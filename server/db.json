@@ -1,13 +1,40 @@
 {
   "games": [
     {
-      "id": 1,
-      "title": "Elden Ring",
-      "category": ["Souls-like", "relaxing", "Dark Fantasy", "RPG"],
+      "id": "1",
+      "title": "Elden Ring 2",
+      "description": "['Souls-like', 'relaxing', 'Dark Fantasy', 'RPG']",
       "percentComplete": 26,
       "price": 119,
-      "img": "https://preview.redd.it/bueqtztxmnj81.png?auto=webp&s=692ee8026d707e035977daf27c5ef6298e019718",
       "favorite": true
+    },
+    {
+      "id": "2",
+      "title": "Dark Souls",
+      "description": "['Souls-like', 'relaxing', 'Dark Fantasy', 'RPG']",
+      "percentComplete": 87,
+      "price": 119,
+      "favorite": false
+    },
+    {
+      "title": "Elden Ring 2",
+      "description": "['Souls-like', 'relaxing', 'Dark Fantasy', 'RPG']",
+      "percentComplete": 26,
+      "id": "Q-DuZ3H"
+    },
+    {
+      "title": "Depression",
+      "description": "['Souls-like', 'relaxing', 'Dark Fantasy', 'RPG']",
+      "percentComplete": 26,
+      "id": "bLVQ9Qu"
+    },
+    {
+      "id": "SJpnPiH",
+      "title": "",
+      "description": "",
+      "percentComplete": 0,
+      "favorite": false,
+      "price": 0
     }
   ]
 }

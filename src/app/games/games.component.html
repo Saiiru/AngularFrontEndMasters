@@ -3,14 +3,16 @@
     <app-games-list
       [games]="games$ | async"
       (selected)="selectGame($event)"
-      (deleted)="deletedGame($event)"
-    ></app-games-list>
+      (deleted)="deleteGame($event)"
+    >
+    </app-games-list>
   </div>
   <div class="games-details">
     <app-games-details
       [game]="selectedGame"
       (saved)="saveGame($event)"
       (reset)="reset()"
-    ></app-games-details>
+    >
+    </app-games-details>
   </div>
 </div>

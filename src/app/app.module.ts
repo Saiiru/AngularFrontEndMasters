@@ -13,10 +13,11 @@ import { MaterialModule } from './shared/material.module';
 import { LoaderInterceptor } from './shared/services/loader/loader.interceptor';
 import { GamesListComponent } from './games/games-list/games-list.component';
 import { GamesDetailsComponent } from './games/games-details/games-details.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, GamesComponent, GamesListComponent, GamesDetailsComponent],
+  declarations: [AppComponent, HomeComponent, GamesComponent, GamesListComponent, GamesDetailsComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

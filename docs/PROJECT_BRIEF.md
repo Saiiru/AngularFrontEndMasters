@@ -5,7 +5,7 @@
 **Repositório atual:** https://github.com/Saiiru/AngularFrontEndMasters
 **Nome anterior:** `AngularFrontEndMasters` (preservado por dependências de publicação/treinamento)
 **Tecnologias observadas:** Angular 8 · TypeScript
-**Estado verificado por inspeção:** Código e testes de componente/e2e identificados; compatibilidade atual não verificada.
+**Estado verificado por inspeção:** Código e testes de componente/e2e identificados; build de compatibilidade executado; toolchain de 2019 permanece obsoleto.
 
 ## Problema e objetivo
 
@@ -15,7 +15,7 @@ Este é um estudo/experimento de engenharia de software; não é declarado como 
 
 ## O que existe atualmente
 
-Código e testes de componente/e2e identificados; compatibilidade atual não verificada. Os arquivos originais, licenças, histórico e eventuais instruções de instalação permanecem no repositório. Esta curadoria não executou todas as dependências nem comprovou operação funcional. Para executar, use as instruções originais do README se disponíveis; quando ausentes, a preparação do ambiente é uma tarefa pendente, não um comando inventado.
+Código e testes de componente/e2e identificados; build de compatibilidade executado; toolchain de 2019 permanece obsoleto. Os arquivos originais, licenças, histórico e eventuais instruções de instalação permanecem no repositório. Esta curadoria não executou todas as dependências nem comprovou operação funcional. Para executar, use as instruções originais do README se disponíveis; quando ausentes, a preparação do ambiente é uma tarefa pendente, não um comando inventado.
 
 ## Projeto, autoria e referências
 
@@ -35,3 +35,14 @@ Atividade Frontend Masters; nome real preservado por Pages legada. Créditos, fo
 **Ainda não é:** sistema integrado à KORA, serviço em produção ou prova de maturidade sem testes.
 
 [Voltar ao portfólio SAIRU/BLACKSITE](https://saiiru.github.io/#projetos-independentes)
+
+
+## Verificação de funcionamento — 12/11/2026
+
+**Estado confirmado:** Angular 8 compilável em ambiente de compatibilidade
+
+**Evidência:** Node 24 + NODE_OPTIONS=--openssl-legacy-provider; npm run build -- --output-path=/tmp/sairu-angular-legacy-build: exit 0
+
+**Limites e bloqueios:** Angular 8, Webpack antigo, Zone.js e opções OpenSSL obsoletas; teste não elimina vulnerabilidades. Não promover a produção moderna sem migração.
+
+Esta validação não implica integração à KORA nem certificação de produção. Não alterar histórico, licença e autoria dos tutoriais.

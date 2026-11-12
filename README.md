@@ -2,7 +2,7 @@
 
 **Objetivo:** Explorar componentes, rotas e organização de telas no Angular por exercícios práticos.
 
-**Estado:** Código e testes de componente/e2e identificados; compatibilidade atual não verificada.
+**Estado:** Código e testes de componente/e2e identificados; build de compatibilidade validado; dependências legadas sem atualização.
 
 **Documentação técnica, origem e próximos passos:** [docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md)
 
@@ -37,3 +37,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Verificação do código em 12/11/2026
+
+Node 24 + NODE_OPTIONS=--openssl-legacy-provider; npm run build -- --output-path=/tmp/sairu-angular-legacy-build: exit 0
+
+**Limitações:** Angular 8, Webpack antigo, Zone.js e opções OpenSSL obsoletas; teste não elimina vulnerabilidades. Não promover a produção moderna sem migração.

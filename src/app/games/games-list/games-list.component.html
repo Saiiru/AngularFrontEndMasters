@@ -4,7 +4,7 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list>
-      <mat-list-item *ngFor="let game of games" (click)="selected.emit(game)">
+      <mat-list-item *ngFor="let game of games" (click)="selected.emit(game)" tabindex="0" role="button" (keydown.enter)="selected.emit(game)">
         <h5 matLine>{{ game.title }} {{ game.id }}</h5>
         <h3 matLine>{{ game.description }}</h3>
         <button

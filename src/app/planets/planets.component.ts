@@ -12,23 +12,27 @@ export class PlanetsComponent implements OnInit {
   starships: any[] = [];
 
   loading$ = this._loader.isLoading$;
+  error = '';
 
   constructor(private planetService: PlanetService, private _loader: LoaderService) {}
 
-  ngOnInit() {}
+  ngOnInit() { this.loadPlanets(); }
 
   loadPlanets(){
     this.planets = []
-    this.planetService.getAllPlanets().subscribe((data) => {
-      this.planets = data
-    })
+    this.error = '';
+    this.planetService.getAllPlanets().subscribe(
+      data => this.planets = data,
+      () => this.error = 'Não foi possível consultar os planetas. Tente novamente.'
+    );
   }
 
   loadStarships(){
-    this.planetService.getAllStarships().subscribe((data) => {
-
-      this.starships = data
-      console.log(this.starships, data)
-    })
+    this.starships = [];
+    this.error = '';
+    this.planetService.getAllStarships().subscribe(
+      data => this.starships = data,
+      () => this.error = 'Não foi possível consultar as naves. Tente novamente.'
+    );
   }
 }

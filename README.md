@@ -1,3 +1,15 @@
+# Angular Component Lab
+
+**Objetivo:** Explorar componentes, rotas e organização de telas no Angular por exercícios práticos.
+
+**Estado:** Código e testes de componente/e2e identificados; compatibilidade atual não verificada.
+
+**Documentação técnica, origem e próximos passos:** [docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md)
+
+---
+
+## Material original preservado
+
 # AngularFrontEndMasters
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.29.

@@ -19,7 +19,9 @@ const emptyGame: Game = {
 })
 export class GamesComponent implements OnInit {
   games: Game[] = [];
-  games$: Observable<Game[]>
+  games$: Observable<Game[]>;
+  error = '';
+  notice = 'Registros fictícios, somente no navegador.';
   selectedGame = emptyGame;
   originalTitle = '';
   isFavorite: boolean = false;
@@ -30,8 +32,7 @@ export class GamesComponent implements OnInit {
   }
 
   fetchGames() {
-    this.games$ = this.gamesService.all()
-    // this.gamesService.all().subscribe((data: any) => (this.games = data));
+    this.games$ = this.gamesService.all();
   }
   selectGame(game) {
     this.selectedGame = { ...game };
@@ -40,8 +41,10 @@ export class GamesComponent implements OnInit {
   }
 
   deleteGame(gameId) {
-    this.gamesService.delete(gameId).subscribe((result) => this.fetchGames());
-    console.log('delete game', gameId);
+    this.gamesService.delete(gameId).subscribe(() => {
+      this.notice = 'Jogo excluído localmente.';
+      this.reset();
+    });
   }
 
   reset() {
@@ -50,23 +53,23 @@ export class GamesComponent implements OnInit {
 
   saveGame(game) {
     let message;
-    console.log(game.id, game);
-    if (game.id) {
-      message = 'game updated';
-      this.updateGame(game);
-      return message;
-    } else {
-      message = 'game created';
-      this.createGame(game);
-      return message;
+    try {
+      if (game.id) { this.updateGame(game); message = 'Jogo atualizado.'; }
+      else { this.createGame(game); message = 'Jogo criado.'; }
+      this.notice = message;
+      this.error = '';
+      this.reset();
+    } catch (error) {
+      this.error = error instanceof Error ? error.message : 'Dados inválidos.';
     }
+    return message;
   }
 
   updateGame(game) {
-    this.gamesService.update(game).subscribe((result) => this.fetchGames());
+    this.gamesService.update(game).subscribe();
   }
 
   createGame(game) {
-    this.gamesService.create(game).subscribe((result) => this.fetchGames());
+    this.gamesService.create(game).subscribe();
   }
 }

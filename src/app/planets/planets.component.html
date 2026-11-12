@@ -1,16 +1,28 @@
-<div class="items">
-  <ul>
-    <li *ngFor="let p of planets">{{ p.name }}</li>
-  </ul>
-  <ul>
-    <li *ngFor="let t of starships">{{ t.name }}, Model: {{ t.model }}</li>
-  </ul>
-</div>
-<div>
-  <button (click)="loadPlanets()">Load Planets</button>
-  <button (click)="loadStarships()">Load Starships</button>
-</div>
-<!-- subscription to loading observable > -->
-<div class="loading" *ngIf="loading$ | async">
-  <h1>Please wait...</h1>
-</div>
+<section class="swapi-lab">
+  <h1>SWAPI · Planetas e naves</h1>
+  <p class="source-note">Consulta ao catálogo público de Star Wars. Sem login, chave de API nem dados pessoais.</p>
+  <div class="swapi-actions">
+    <button type="button" (click)="loadPlanets()">Atualizar planetas</button>
+    <button type="button" (click)="loadStarships()">Carregar naves</button>
+  </div>
+  <p *ngIf="loading$ | async" role="status">Consultando a SWAPI…</p>
+  <p *ngIf="error" role="alert" class="swapi-error">{{ error }}</p>
+  <section aria-label="Planetas" *ngIf="planets.length">
+    <h2>Planetas ({{ planets.length }})</h2>
+    <ul class="swapi-grid">
+      <li *ngFor="let planet of planets">
+        <strong>{{ planet.name }}</strong>
+        <small>Clima: {{ planet.climate }} · População: {{ planet.population }}</small>
+      </li>
+    </ul>
+  </section>
+  <section aria-label="Naves" *ngIf="starships.length">
+    <h2>Naves ({{ starships.length }})</h2>
+    <ul class="swapi-grid">
+      <li *ngFor="let ship of starships">
+        <strong>{{ ship.name }}</strong>
+        <small>Modelo: {{ ship.model }}</small>
+      </li>
+    </ul>
+  </section>
+</section>

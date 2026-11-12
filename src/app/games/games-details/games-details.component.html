@@ -3,7 +3,7 @@
       <mat-card-header>
         <mat-card-title>
           <span *ngIf="selectedGame?.id; else elseBlock">{{originalTitle | titlecase}}</span>
-          <ng-template #elseBlock>Select a game</ng-template>
+          <ng-template #elseBlock>Novo jogo ou selecionar para editar</ng-template>
         </mat-card-title>
       </mat-card-header>
       <form #gameForm="ngForm" (submit)="saved.emit(selectedGame)">
@@ -39,7 +39,7 @@
             ></mat-slider>
           </section>
           <mat-checkbox
-            [aria-label]="isFavorite"
+            aria-label="Favorito"
             [(ngModel)]="selectedGame.favorite"
             name="favorite"
             >Favorite
@@ -57,8 +57,8 @@
           </button>
           <button mat-button (click)="reset.emit()">Reset</button>
         </mat-card-actions>
-        <pre>{{ gameForm.value | json }}</pre>
-        <pre>{{ gameForm.valid | json }}</pre>
+
+
       </form>
     </mat-card>
 

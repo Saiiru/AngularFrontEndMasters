@@ -9,3 +9,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.local-info {margin:16px;padding:10px;background:#e8f2f4;color:#173c52;border-left:4px solid #008aa5}
+.local-error {margin:16px;padding:10px;background:#ffe2e8;color:#920c25}
+button[aria-label] {margin:0 16px 12px;padding:10px 16px;cursor:pointer}

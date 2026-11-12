@@ -46,3 +46,14 @@ Atividade Frontend Masters; nome real preservado por Pages legada. Créditos, fo
 **Limites e bloqueios:** Angular 8, Webpack antigo, Zone.js e opções OpenSSL obsoletas; teste não elimina vulnerabilidades. Não promover a produção moderna sem migração.
 
 Esta validação não implica integração à KORA nem certificação de produção. Não alterar histórico, licença e autoria dos tutoriais.
+
+
+## Corte funcional de 12/11/2026
+
+- Backend antigo de jogos em `http://localhost:3000` substituído por serviço local browser-only com BehaviorSubject, validação e persistência no mesmo navegador.
+- Rotas públicas corrigidas e preservadas por hash para hospedagem em GitHub Pages. Login de estudo não é exposto como autenticação.
+- PlanetService passou a buscar todas as páginas da SWAPI, com limite de 20 páginas e host/path restritos.
+- Erros HTTP da SWAPI são apresentados ao visitante; dados de planetas e naves carregam independentemente.
+- Build Angular 8 de produção otimizado por subprocesso Node com compatibilidade OpenSSL (635 KiB de JS principal nesta execução; não é um benchmark de produção).
+- Teste browser de criação/reload/delete e consulta de 60 planetas/36 naves passou em 390 e 1280px.
+- Pendência: migrar Angular 8 e dependências, revisar testes Karma/Protractor e reduzir risco de CVEs. Não afirmar framework atualizado.

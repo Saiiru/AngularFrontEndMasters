@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { shareReplay } from 'rxjs/internal/operators/shareReplay';
-import { AuthService } from './shared/services/auth/auth.service';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,41 +6,13 @@ import { AuthService } from './shared/services/auth/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Staem';
+  isNarrow = typeof window !== 'undefined' && window.innerWidth < 800;
+  @HostListener('window:resize') onResize() { this.isNarrow = window.innerWidth < 800; }
+  title = 'Component Lab';
   links = [
     { path: '/home', icon: 'home', title: 'Home' },
     { path: '/games', icon: 'view_list', title: 'Games' },
-    { path: '/planets', icon: 'view_list', title: 'Planets' },
+    { path: '/starwars/planets', icon: 'public', title: 'SWAPI Planets' },
   ];
 
-  examples = [
-    {
-      path: '/starwars/planets',
-      icon: 'system_update_alt',
-      title: 'Star Wars Planets',
-    },
-    {
-      path: '/starwars/starships',
-      icon: 'system_update_alt',
-      title: 'Star Wars Starships',
-    },
-    // { path: '/examples/child', icon: 'face', title: 'Child Routes' },
-    // { path: '/examples/protected', icon: 'vpn_key', title: 'Protected Routes' },
-    // {
-    //   path: '/examples/lazy',
-    //   icon: 'swap_vertical_circle',
-    //   title: 'Lazy Module',
-    // },
-    // { path: '/examples/create', icon: 'add_box', title: 'Dynamic Components' },
-    // {
-    //   path: '/examples/input',
-    //   icon: 'dashboard_customize',
-    //   title: 'Custom Input',
-    // },
-  ];
-  isAuthenticated$ = this.authService.isAuthenticated$.pipe(shareReplay(1));
-  constructor(private authService: AuthService) {}
-  logout() {
-    this.authService.logout();
-  }
 }
